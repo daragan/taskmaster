@@ -14,7 +14,7 @@ class TaskController < ApplicationController
   post '/tasks' do
     if logged_in?
       if params["task"]["name"] == "" || params["task"]["content"] == ""
-      #  flash[:message] = "Please fill in all required fields."
+      # env['x-rack.flash']flash[:notice] = "Please fill in all required fields."
         redirect to '/tasks/new'
       else
         @user = current_user
@@ -55,7 +55,7 @@ class TaskController < ApplicationController
       @task = Task.find_by(id: params[:id])
       if @task && @task.user == current_user
         if @task.update(name: params["task"]["name"], content: params["task"]["content"])
-          #flash[:message] = "Your task has been updated."
+        #  env['x-rack.flash']flash[:notice] = "Your task has been updated."
           redirect to '/tasks'
         else
           redirect to '/tasks'
@@ -70,7 +70,7 @@ class TaskController < ApplicationController
       if @task && @task.user == current_user
         @task.destroy
       end
-    #flash[:message] = "Your task has been deleted."
+  #  env['x-rack.flash']flash[:notice] = "Your task has been deleted."
     redirect to '/tasks'
   end
 

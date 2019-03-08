@@ -1,5 +1,5 @@
 require './config/environment'
-
+require 'rack-flash'
 class ApplicationController < Sinatra::Base
 
   configure do
@@ -25,7 +25,7 @@ class ApplicationController < Sinatra::Base
 
       def redirect_if_not_logged_in
         if !logged_in?
-          flash[:message] = "You must be logged in to view that page."
+          #env['x-rack.flash']flash[:notice] = "You must be logged in to view that page."
           redirect to '/user/login'
         end
       end
