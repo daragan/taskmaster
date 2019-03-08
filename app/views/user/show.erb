@@ -1,0 +1,11 @@
+<h1>My tasklist</h1>
+<p>This is your tasklist!, <%= @user.username %></p>
+<h3>Current Tasks: </h3>
+<% current_user.tasks.collect do |task| %>
+  <ul>
+    <li><a href="/tasks/<%=task.id%>"><%= task.title %> - <%= task.content %></a></li>
+  </ul>
+<% end %>
+<br>
+<a href="/tasks/new">Add New task</a><br>
+<a href="/logout">Log Out</a>
