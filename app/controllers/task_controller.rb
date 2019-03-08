@@ -50,12 +50,12 @@ class TaskController < ApplicationController
   patch '/tasks/:id' do
   redirect_if_not_logged_in
     if params["task"]["name"] == "" || params["task"]["content"] == ""
-      redirect to '/books/:id/edit'
+      redirect to '/tasks/:id/edit'
     else
       @task = Task.find_by(id: params[:id])
       if @task && @task.user == current_user
-        if @task.update(name: params["task"]["name"], content: params["task"]["name"])
-          #flash[:message] = "Book sucessfully updated."
+        if @task.update(name: params["task"]["name"], content: params["task"]["content"])
+          #flash[:message] = "Your task has been updated."
           redirect to '/tasks'
         else
           redirect to '/tasks'
@@ -64,13 +64,13 @@ class TaskController < ApplicationController
     end
   end
 
-  delete '/books/:id/delete' do
+  delete '/tasks/:id/delete' do
     redirect_if_not_logged_in
     @task = Task.find_by(id: params["id"])
       if @task && @task.user == current_user
-        @task.clear
+        @task.destroy
       end
-    #flash[:message] = "Your book has been deleted."
+    #flash[:message] = "Your task has been deleted."
     redirect to '/tasks'
   end
 
