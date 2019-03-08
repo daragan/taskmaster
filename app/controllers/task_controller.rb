@@ -31,6 +31,23 @@ class TaskController < ApplicationController
     end
   end
 
+  get '/tasks/:id' do
+    redirect_if_not_logged_in
+    @task = Task.find_by(id: params[:id])
+    erb :'/tasks/show'
+  end
+
+  get '/tasks/:id/edit' do
+    redirect_if_not_logged_in
+    @task = Task.find_by(id: params[:id])
+    if @task && @task.user == current_user
+      erb :'/tasks/edit'
+    else
+      redirect to '/tasks/tasks'
+    end
+  end
+
+
 
 
 end
