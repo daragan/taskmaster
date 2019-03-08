@@ -1,0 +1,13 @@
+
+<h2>Create a new update or task:</h2>
+<br>
+<form method="POST" action="/tasks">
+  <label for="name">Name:</label><br>
+  <input type="text" name="task[name]"/><br><br>
+  <label for="content">Content:</label><br>
+  <input type="text" name="task[content]"/><br><br>
+  <input type="submit" value="Add update to Tasklist">
+</form>
+<br>
+<a class="button" href="/tasks">Back to My Tasklist</a><br>
+<a class="button" href="/logout">Log Out</a>

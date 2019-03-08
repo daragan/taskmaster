@@ -18,17 +18,17 @@ class UserController < ApplicationController
   post '/user/signup' do
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       redirect to '/user/signup'
-    elsif Users.all.find { |user| user.username == params[:username] }
-      flash[:message] = "This username already belongs to another account" #have to add alerts, flash isnt working
+    elsif User.all.find { |user| user.username == params[:username] }
+      #flash[:message] = "This username already belongs to another account" #have to add alerts, flash isnt working
       redirect to '/user/signup'
-    elsif Users.all.find { |user| user.email == params[:email] }
-      flash[:message] = "This email already belongs to another account"
+    elsif User.all.find { |user| user.email == params[:email] }
+    #  flash[:message] = "This email already belongs to another account"
       redirect to '/user/signup'
     else
-      @user = Users.new(:username => params[:username], :email => params[:email], :password => params[:password])
+      @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       @user.save
       session[:user_id] = @user_id
-      flash[:message] = "You have succesfully registered!"
+    #  flash[:message] = "You have succesfully registered!"
       redirect to '/user/login'
     end
   end
@@ -37,7 +37,7 @@ class UserController < ApplicationController
     if !logged_in?
       erb :'/user/login'
     else
-      redirect to '/'
+      redirect to '/tasks'
     end
   end
 
@@ -54,7 +54,7 @@ class UserController < ApplicationController
   get '/logout' do
     if logged_in?
       session.destroy
-      flash[:message] = "You have succesfully logged out!"
+      #flash[:message] = "You have succesfully logged out!"
       redirect to '/home'
     else
       redirect '/books'
