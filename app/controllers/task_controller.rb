@@ -47,7 +47,31 @@ class TaskController < ApplicationController
     end
   end
 
+  patch '/tasks/:id' do
+    redirect_if_not_logged_in
+    if params["task"]["name"] == "" || params["task"]["content"] == ""
+      redirect to '/tasks/:id/edit'
+    else
+      @task = Task.find_by(id: params[:id])
+      if @task && @task.user == current_user
+        if @task.update(title: params["task"]["name"], content: params["task"]["content"])
+          #flash[:message] = "Task has been updated.!"
+          redirect to '/tasks'
+        else
+          redirect to '/tasks'
+        end
+      end
+    end
+  end
 
-
+  delete '/tasks/:id/delete' do
+    redirect_if_not_logged_in
+    @task = Task.find_by(id: params["id"])
+    if @task && @task.user == current_user
+      @task.destroy
+    end
+    #flash[:message] = "Your task has been deleted"
+    redirect to '/tasks'
+  end
 
 end
