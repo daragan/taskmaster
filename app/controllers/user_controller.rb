@@ -54,10 +54,10 @@ class UserController < ApplicationController
   get '/logout' do
     if logged_in?
       session.destroy
-      #flash[:message] = "You have succesfully logged out!"
-      redirect to '/home'
+    #  flash[:message] = "You have succesfully logged out!"
+      redirect to '/'
     else
-      redirect '/books'
+      redirect '/'
     end
   end
 
