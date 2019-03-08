@@ -8,3 +8,12 @@
   <input type = "text" name = "task[content]" value = "<%= @task.content %>"><br>
   <input type = "submit" value = "Update Task">
 </form>
+<br>
+<br>
+  <form action="/tasks/<%=@task.id%>/delete" method = "POST">
+    <input id = "hidden" type = "hidden" name = "_method" value = "delete">
+    <input type = "submit" value = "Delete Book">
+  </form>
+  <br>
+  <a class = "button" href="/tasks">TaskList</a><br>
+  <a href = "/logout">Log Out</a> 
