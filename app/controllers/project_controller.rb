@@ -1,5 +1,6 @@
 class ProjectController < ApplicationController
 
+  #create
   get '/project/new' do
     redirect_if_not_logged_in
     erb :'/project/new'
@@ -10,6 +11,21 @@ class ProjectController < ApplicationController
     project = @user.projects.create(:title => params[:title], :about => params[:about])
     task = project.tasks.create(:name => params[:tasks][:name], :content => params[:tasks][:content])
     redirect '/tasks'
+  end
+
+  #edit
+  get '/project/:id/edit' do
+    redirect_if_not_logged_in
+    @project = Project.find_by_id(params[:id])
+    erb :'/project/edit'
+  end
+
+  patch '/project/:id' do
+    @project = Project.find_by_id(params[:id])
+    @project.title = params[:title]
+    @project.about = params[:about]
+    @project.save
+    redirect '/tasks/tasks'
   end
 
 
