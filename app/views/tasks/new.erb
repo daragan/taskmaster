@@ -1,13 +1,20 @@
+<h1>New Task or Comment</h1>
 
-<h2>Create a new update or task:</h2>
-<br>
-<form method="POST" action="/tasks">
-  <label for="name">Name:</label><br>
-  <input type="text" name="task[name]"/><br><br>
-  <label for="content">Content:</label><br>
-  <input type="text" name="task[content]"/><br><br>
-  <input type="submit" value="Add update to Tasklist">
+<form action = "/tasks/new" method = "POST">
+  <input type = "text" name = "name" placeholder = "Task name">
+
+  <br>
+
+  <input type = "text" name = "content" placeholder = "Comment">
+
+  <br>
+  <label>Add to Project</label><br>
+  <% @project.each do |project| %>
+  <% if project.user_id == @user.id %>
+  <input type = "checkbox" name = "project_id" value = "<%= project.id %>"><%= project.title %><br>
+  <% end %>
+  <% end %>
+
+  <br>
+  <input class = "btn btn-primary" type = "submit" name = "create" value = "Create"
 </form>
-<br>
-<a class="button" href="/tasks/tasks">Back to My Tasklist</a><br>
-<a class="button" href="/logout">Log Out</a>
