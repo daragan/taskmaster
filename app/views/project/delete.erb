@@ -1,0 +1,10 @@
+<h1> Deleting </h1><br><br>
+<h2><%= @project.title %></h2><br><br>
+<h2><%= @project.about %></h2><br><br>
+
+
+<p>Are you sure you wish to delete this project and all it's content?</p>
+<form method = "POST" action = "/project/<%=@project.id%>">
+  <input id = "hidden" type = "hidden" name = "_method" value = "delete">
+  <input type = "submit" value = "delete">
+</form>

@@ -28,7 +28,17 @@ class ProjectController < ApplicationController
     redirect '/tasks/tasks'
   end
 
+  #delete
+  get '/project/:id/delete' do
+    @project = Project.find_by_id(params[:id])
+    erb :'/project/delete'
+  end
 
+  delete 'project/:id' do
+    @project = Project.find_by_id(params[:id])
+    @project.destroy
+    redirect '/tasks/tasks'
+  end
 
 
 end
