@@ -7,3 +7,4 @@ use Rack::MethodOverride
 run ApplicationController
 use UserController
 use TaskController
+use ProjectController
