@@ -1,12 +1,9 @@
-<h2>Create a new Project:</h2>
-<br>
-<form method="POST" action="/projects">
-  <label for="title">Title:</label><br>
-  <input type="text" name="project[title]"/><br><br>
-  <label for="about">About:</label><br>
-  <input type="text" name="project[about]"/><br><br>
-  <input type="submit" value="Add update to ProjectList">
+<h1>New project</h1>
+
+<form method = "POST" action = "/project/new">
+  <input type = "text" name = "title" placeholder = "Project Title"><br><br>
+  <input type = "text" name = "about" placeholder = "Description"><br><br>
+  <input type = "text" name = "tasks[name]" placeholder = "New Task"><br><br>
+  <input type = "text" name = "tasks[content]" placeholder = "Comments"><br><br>
+  <input class = "btn btn-primary" type = "submit" name = "create" value = "Create">
 </form>
-<br>
-<a class="button" href="/project/projects">Back to My ProjectList</a><br>
-<a class="button" href="/logout">Log Out</a>
