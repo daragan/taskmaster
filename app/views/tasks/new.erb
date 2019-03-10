@@ -1,4 +1,18 @@
-<h1>New Task or Comment</h1>
+
+<h2>Create New Task:</h2>
+<br>
+<form method="POST" action="/tasks">
+  <label for="task_name">Name:</label><br>
+  <input type="text" name="tasks[name]"/><br><br>
+  <label for="task_content">Content:</label><br>
+  <input type="text" name="task[content]"/><br><br>
+  <input type="submit" value="Add to Tasklist">
+</form>
+<br>
+<a class="button" href="/books">Back to TaskList</a><br>
+<a class="button" href="/logout">Log Out</a>
+
+<!--<h1>New Task or Comment</h1>
 
 <form action = "/tasks/new" method = "POST">
   <input type = "text" name = "name" placeholder = "Task name">
@@ -17,4 +31,4 @@
 
   <br>
   <input class = "btn btn-primary" type = "submit" name = "create" value = "Create"
-</form>
+</form> -->

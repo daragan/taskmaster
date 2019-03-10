@@ -119,7 +119,7 @@ class TaskController < ApplicationController
       @task = Task.find_by(id: params[:id])
       if @task && @task.user == current_user
         if @task.update(name: params["task"]["name"], content: params["task"]["content"])
-          env['x-rack.flash']flash[:notice] = "Your task has been updated."
+        #  env['x-rack.flash']flash[:notice] = "Your task has been updated."
           redirect to '/tasks'
         else
           redirect to '/tasks'
@@ -134,6 +134,7 @@ class TaskController < ApplicationController
       if @task && @task.user == current_user
        @task.destroy
       end
-    env['x-rack.flash']flash[:notice] = "Your task has been deleted."
+  #  env['x-rack.flash']flash[:notice] = "Your task has been deleted."
     redirect to '/tasks'
   end
+end
