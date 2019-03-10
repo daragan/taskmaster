@@ -1,5 +1,5 @@
 
-<h2>Edit Tasko:</h2>
+<h2>Edit Task:</h2>
 <br>
 <form action="/tasks/<%=@task.id%>" method="POST">
 <input id="hidden" type="hidden" name="_method" value="PATCH">
@@ -10,12 +10,7 @@
   <input type="submit" value="Update Book Info">
 </form>
 <br>
-<br>
-  <form action="/task/<%=@task.id%>/delete" method="POST">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Task">
-  </form>
-<br>
+
 <a class="button" href="/tasks/tasks">Back to TaskList</a><br>
 <a href="/logout">Log Out</a>
 <!--<h2>Edit Task:</h2>

@@ -61,17 +61,17 @@ class UserController < ApplicationController
    if params[:username] == "" || params[:email] == "" || params[:password] == ""
      redirect to '/user/signup'
   elsif User.all.find { |user| user.username == params[:username] }
-     env['x-rack.flash'][:notice] = "This username already belongs to another account" #have to add alerts, flash isnt working
+    # env['x-rack.flash'][:notice] = "This username already belongs to another account" #have to add alerts, flash isnt working
      redirect to '/user/signup'
    elsif User.all.find { |user| user.email == params[:email] }
-    env['x-rack.flash'][:notice] = "This email already belongs to another account"
+  #  env['x-rack.flash'][:notice] = "This email already belongs to another account"
       redirect to '/user/signup'
     else
      @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       @user.save
       session[:user_id] = @user_id
-   env['x-rack.flash'][:notice] = "You have succesfully registered!"
-      redirect to '/tasks'
+  # env['x-rack.flash'][:notice] = "You have succesfully registered!"
+      redirect to '/user/login'
    end
  end
 
@@ -96,7 +96,7 @@ class UserController < ApplicationController
   get '/logout' do
     if logged_in?
       session.destroy
-     env['x-rack.flash'][:notice] = "You have succesfully logged out!"
+     #env['x-rack.flash'][:notice] = "You have succesfully logged out!"
       redirect to '/'
     else
       redirect '/'

@@ -9,26 +9,5 @@
   <input type="submit" value="Add to Tasklist">
 </form>
 <br>
-<a class="button" href="/books">Back to TaskList</a><br>
+<a class="button" href="/tasks/tasks">Back to TaskList</a><br>
 <a class="button" href="/logout">Log Out</a>
-
-<!--<h1>New Task or Comment</h1>
-
-<form action = "/tasks/new" method = "POST">
-  <input type = "text" name = "name" placeholder = "Task name">
-
-  <br>
-
-  <input type = "text" name = "content" placeholder = "Comment">
-
-  <br>
-  <label>Add to Project</label><br>
-  <% @projects.each do |project| %>
-  <% if project.user_id == @user.id %>
-  <input type = "checkbox" name = "project_id" value = "<%= project.id %>"><%= project.title %><br>
-  <% end %>
-  <% end %>
-
-  <br>
-  <input class = "btn btn-primary" type = "submit" name = "create" value = "Create"
-</form> -->
