@@ -47,6 +47,19 @@ class TaskController < ApplicationController
     redirect '/tasks'
   end
 
+  #deletion!
+  get '/tasks/:id/delete' do
+    @task = Task.find_by_id(params[:id])
+    erb :'/tasks/delete'
+  end
+
+  delete '/tasks/:id' do
+    @task = Task.find_by_id(params[:id])
+    @task.destroy
+    redirect '/tasks'
+  end
+
+end
 
 
 
@@ -124,5 +137,3 @@ class TaskController < ApplicationController
   #  env['x-rack.flash']flash[:notice] = "Your task has been deleted."
   #  redirect to '/tasks'
 #  end
-
-end
