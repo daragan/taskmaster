@@ -1,1 +1,21 @@
 <h1>Hello, <%= @user.username %></h1>
+<a href = "/project/new"><button type = "button" class = "btn btn-default">Create A New Project</button></a>
+
+<div class = "col-6">
+  <% @projects.each do |project| %>
+  <% if project.user_id == @user.id %>
+    <!-- takes all list and checks if it matches with user id before iterating -->
+    <h2><%= project.name %></h2>
+    <a href ="/project/<%=project.id%>/edit">Edit Project</a>
+    <a href ="/project/<%=project.id%>/delete">Delete Project</a>
+    <h3><a href = "tasks/new/<%=project.id%>">New Task</a></h3>
+
+    <%project.tasks.each do |task| %>
+    <h4><%= task.name %>
+      <a href ="/tasks/<%=task.id%>/edit">Edit Task</a>
+      <a href ="/tasks/<%=task.id%>/delete">Delete Task</a>
+    </h4>
+
+  <% end %>
+  <% end %>
+  <% end %> 

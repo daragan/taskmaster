@@ -21,6 +21,32 @@ class TaskController < ApplicationController
   end
 
   #builds task correlated with project_id
+  get 'tasks/new/:id' do
+    redirect_if_not_logged_in
+    @project = Project.find_by_id(params[:id])
+    erb :'/tasks/new_project'
+  end
+
+  post '/tasks/new/:id' do
+    @project = Project.find_by_id(params[:id])
+    Task.create(:name => params[:name], :content => params[:content], :project_id => params[:id])
+    redirect '/tasks'
+  end
+
+  #task editing
+  get '/taks/new/:id'do
+    @project = Project.find_by_id(params[:id])
+    erb :'/taks/edit'
+  end
+
+  patch '/tasks/:id' do
+    @task = Task.find_by_id(params[:id])
+    @task.name = params[:name]
+    @task.content = prams[:content]
+    @task.save
+    redirect '/tasks'
+  end
+
 
 
 #have to refactoR ALL OF THIS CODE
