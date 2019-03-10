@@ -9,7 +9,7 @@
 
   <br>
   <label>Add to Project</label><br>
-  <% @project.each do |project| %>
+  <% @projects.each do |project| %>
   <% if project.user_id == @user.id %>
   <input type = "checkbox" name = "project_id" value = "<%= project.id %>"><%= project.title %><br>
   <% end %>
