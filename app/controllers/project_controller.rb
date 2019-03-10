@@ -8,8 +8,10 @@ class ProjectController < ApplicationController
 
   post '/project/new' do
     @user = current_user
-    project = Project.create(:title => params[:title], :about => params[:about])
-    task = Task.create(:name => params[:name], :content => params[:content])
+    project = Project.create(:title => params[:title])
+    project = Project.create(:about => params[:about])
+    task = Task.create(:name => params[:name])
+    task = Task.create(:content => params[:content])
     project.tasks << task unless project.tasks.include?(task)
     redirect '/tasks'
   end
