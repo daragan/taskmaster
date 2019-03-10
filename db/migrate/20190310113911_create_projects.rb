@@ -1,10 +1,9 @@
-class CreateProects < ActiveRecord::Migration
+class CreateProjects < ActiveRecord::Migration
   def change
     create_table :projects do |t|
       t.string :title
       t.string :about
-      t.string :task_id
-      t.string :user_id
+      t.integer :user_id
     end
   end
 end

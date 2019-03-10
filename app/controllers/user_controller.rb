@@ -13,7 +13,7 @@ class UserController < ApplicationController
 
   post 'user/signup' do
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
-      redirect 'users/signup'
+      redirect '/users/signup'
     else
       @user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
       session[:user_id] = @user.id
@@ -44,7 +44,7 @@ class UserController < ApplicationController
       session.clear
       redirect to '/user/login'
     else
-      redirect to '/'
+      redirect to '/tasks'
     end
   end
 

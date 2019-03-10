@@ -3,7 +3,7 @@ class TaskController < ApplicationController
   get '/tasks' do
     redirect_if_not_logged_in
     @user = current_user
-    @projects = Project.all
+    @projects = @user.projects
     erb :'tasks/show'
   end
 

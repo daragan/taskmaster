@@ -3,7 +3,8 @@ class CreateTasks < ActiveRecord::Migration
     create_table :tasks do |t|
       t.string :name
       t.string :content
-      t.string :user_id
+      t.integer :user_id
+      t.integer :project_id
     end
   end
 end
