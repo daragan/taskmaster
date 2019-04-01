@@ -61,6 +61,7 @@ class UserController < ApplicationController
    if params[:username] == "" || params[:email] == "" || params[:password] == ""
      redirect to '/user/signup'
   elsif User.all.find { |user| user.username == params[:username] }
+    flash[:error] = "This username already belongs to another account"
     # env['x-rack.flash'][:notice] = "This username already belongs to another account" #have to add alerts, flash isnt working
      redirect to '/user/signup'
    elsif User.all.find { |user| user.email == params[:email] }

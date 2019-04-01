@@ -1,4 +1,5 @@
 require './config/environment'
+require 'sinatra/flash'
 class ApplicationController < Sinatra::Base
 
   configure do
@@ -6,11 +7,22 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "onepasswordtorulethemall"
+    register Sinatra::Flash
   end
+
 
   get "/" do
     erb :home
   end
+
+  get '/bleh' do
+  if flash[:blah]
+    # The flash collection is cleared after any request that uses it
+    "Have you ever felt blah? Oh yes. #{flash[:blah]} Remember?"
+  else
+    "Oh, now you're only feeling bleh?"
+  end
+end
 
   helpers do
 

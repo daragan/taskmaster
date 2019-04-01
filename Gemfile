@@ -12,6 +12,7 @@ gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem 'corneal'
+gem 'sinatra-flash'
 
 
 group :test do
