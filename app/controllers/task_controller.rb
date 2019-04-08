@@ -79,7 +79,8 @@ class TaskController < ApplicationController
     if logged_in?
       if params["task"]["name"] == "" || params["task"]["content"] == ""
       # env['x-rack.flash']flash[:notice] = "Please fill in all required fields."
-        redirect to '/tasks/new'
+      flash.now[:notice] = "One of the required fields is blank"
+      erb :'/tasks/new'
       else
         @user = current_user
         @task = Task.create(name: params["task"]["name"], content: params["task"]["content"], user_id: session[:user_id])
@@ -87,6 +88,7 @@ class TaskController < ApplicationController
          @user.tasks << @task
           redirect to '/tasks'
         else
+
           redirect to '/tasks/new'
        end
      end
