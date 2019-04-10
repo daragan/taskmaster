@@ -79,6 +79,8 @@ class TaskController < ApplicationController
     if logged_in?
       if params["task"]["name"] == "" || params["task"]["content"] == ""
       # env['x-rack.flash']flash[:notice] = "Please fill in all required fields."
+      session[:name] = params["task"]["name"]
+      session[:content] = params["task"]["content"]
       flash.now[:notice] = "One of the required fields is blank"
       erb :'/tasks/new'
       else
